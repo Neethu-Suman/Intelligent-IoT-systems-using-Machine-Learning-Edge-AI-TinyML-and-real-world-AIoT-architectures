@@ -119,4 +119,4 @@ Prerequisites: PlatformIO IDE or Arduino IDE
 
 This codebase is designed horizontally to scale across multiple Microcontroller Units (MCUs) and Edge Gateways:
 
-<img src="https://github.com/Neethu-Suman/Intelligent-IoT-systems-using-Machine-Learning-Edge-AI-TinyML-and-real-world-AIoT-architectures/blob/main/supporting%20data/key_hardware.jpg" width = "400">
+<img src="https://github.com/Neethu-Suman/Intelligent-IoT-systems-using-Machine-Learning-Edge-AI-TinyML-and-real-world-AIoT-architectures/blob/main/supporting%20data/key_hardware.jpg" >
