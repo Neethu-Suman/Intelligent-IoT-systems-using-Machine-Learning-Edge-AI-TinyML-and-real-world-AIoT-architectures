@@ -47,21 +47,21 @@ The Python environment handles data ingestion, model exploration, training, and 
 
 Prerequisites: Python 3.9+
 
-#Clone the repository
+        #Clone the repository
+        
+        git clone https://github.com/your-username/Intelligent-IoT-systems-using-Machine-Learning-Edge-AI-TinyML-and-real-world-AIoT-architectures.git
+        
+        cd Intelligent-IoT-systems-using-Machine-Learning-Edge-AI-TinyML-and-real-world-AIoT-architectures/ml_pipeline
 
-git clone https://github.com/your-username/Intelligent-IoT-systems-using-Machine-Learning-Edge-AI-TinyML-and-real-world-AIoT-architectures.git
-
-cd Intelligent-IoT-systems-using-Machine-Learning-Edge-AI-TinyML-and-real-world-AIoT-architectures/ml_pipeline
-
-#Install dependencies
-
-pip install -r requirements.txt
-
-#Train the model and export the quantized TFLite model
-
-python train.py --epochs 50
-
-python quantize.py --input model.h5 --output ../firmware/include/model.h
+        #Install dependencies
+        
+        pip install -r requirements.txt
+        
+        #Train the model and export the quantized TFLite model
+        
+        python train.py --epochs 50
+        
+        python quantize.py --input model.h5 --output ../firmware/include/model.h
 
 **2. Embedded C Firmware Deployment**
 
@@ -69,51 +69,51 @@ The firmware directory contains the runtime engine to execute your optimized mod
 
 Prerequisites: PlatformIO IDE or Arduino IDE
 
-// Snippet from firmware/src/main.cpp
-
-#include <Arduino.h>
-
-#include "model.h" // Your exported TinyML model array
-
-#include "tensorflow/lite/micro/all_ops_resolver.h"
-
-#include "tensorflow/lite/micro/tflite_bridge/micro_error_reporter.h"
-
-#include "tensorflow/lite/micro/micro_interpreter.h"
-
-void setup() {
-
-    Serial.begin(115200);
-    
-    Serial.println("Initializing Intelligent Edge AI System...");
-    
-    // Initialize TinyML interpreter, allocate tensor arena, and load model
-    
-    init_tinyml_model(g_model_data);
-
-}
-
-
-void loop() {
-
-    // 1. Read physical sensor data (e.g., IMU, Temperature, Vibration)
-    
-    float sensor_input = analogRead(A0); 
-
-    // 2. Run local inference 
-    
-    float prediction = run_inference(sensor_input);
-
-    // 3. Take immediate action or stream anomaly scores via MQTT
-    
-    if (prediction > 0.85) {
-    
-        digitalWrite(LED_BUILTIN, HIGH); // Local Anomaly Alert
-    
-    }
-    
-    delay(100); 
-}
+        // Snippet from firmware/src/main.cpp
+        
+        #include <Arduino.h>
+        
+        #include "model.h" // Your exported TinyML model array
+        
+        #include "tensorflow/lite/micro/all_ops_resolver.h"
+        
+        #include "tensorflow/lite/micro/tflite_bridge/micro_error_reporter.h"
+        
+        #include "tensorflow/lite/micro/micro_interpreter.h"
+        
+        void setup() {
+        
+            Serial.begin(115200);
+            
+            Serial.println("Initializing Intelligent Edge AI System...");
+            
+            // Initialize TinyML interpreter, allocate tensor arena, and load model
+            
+            init_tinyml_model(g_model_data);
+        
+        }
+        
+        
+        void loop() {
+        
+            // 1. Read physical sensor data (e.g., IMU, Temperature, Vibration)
+            
+            float sensor_input = analogRead(A0); 
+        
+            // 2. Run local inference 
+            
+            float prediction = run_inference(sensor_input);
+        
+            // 3. Take immediate action or stream anomaly scores via MQTT
+            
+            if (prediction > 0.85) {
+            
+                digitalWrite(LED_BUILTIN, HIGH); // Local Anomaly Alert
+            
+            }
+            
+            delay(100); 
+        }
 
 📊 **Target Hardware Support**
 
