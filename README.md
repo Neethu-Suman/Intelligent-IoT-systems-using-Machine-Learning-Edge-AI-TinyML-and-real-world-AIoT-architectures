@@ -17,27 +17,27 @@ Modern AIoT applications require intelligence distributed across the Edge and th
 📂 Repository Structure
 Plaintext
 
-├── .github/               # CI/CD workflows for testing firmware and python scripts
+        ├── .github/               # CI/CD workflows for testing firmware and python scripts
 
-├── assets/                # Architecture diagrams and performance charts
+        ├── assets/                # Architecture diagrams and performance charts
 
-├── firmware/              # Embedded C/C++ source code for microcontrollers
+        ├── firmware/              # Embedded C/C++ source code for microcontrollers
 
-│   ├── src/               # Core application logic
+        │   ├── src/               # Core application logic
+        
+        │   ├── include/           # Header files and exported TinyML model arrays (`model.h`)
 
-│   ├── include/           # Header files and exported TinyML model arrays (`model.h`)
+        │   └── platformio.ini     # Hardware configuration (ESP32 / STM32 / Arduino)
 
-│   └── platformio.ini     # Hardware configuration (ESP32 / STM32 / Arduino)
+        ├── ml_pipeline/           # Python scripts for model training and quantization
 
-├── ml_pipeline/           # Python scripts for model training and quantization
+        │   ├── train.py           # Model training and validation script
 
-│   ├── train.py           # Model training and validation script
+        │   ├── quantize.py        # TFLite post-training quantization (PTQ) pipeline
 
-│   ├── quantize.py        # TFLite post-training quantization (PTQ) pipeline
+        │   └── requirements.txt   # Python dependencies
 
-│   └── requirements.txt   # Python dependencies
-
-└── README.md              # Project documentation
+        └── README.md              # Project documentation
 
 🛠️ Getting Started
 
